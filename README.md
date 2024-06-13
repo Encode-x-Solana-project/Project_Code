@@ -2,17 +2,13 @@ Solana Encode
 June/2024
 ─
 Vision
-High-level vision of the app/site.
-Are we going with the Gamification/Learning site?
-Objective
-goal 1
-goal 2
-Specification
-It will…
-More 
-Some text.
-Marcos
-Phase 1 - day?
-Define app.
-Phase 2 - day?
-High-level wireframe…
+Educating new users into crypto in a fun and safe environment.
+
+Objectives
+1. Provide fundamentals about crypto economic concepts (DEX, Types of Wallets, Loans, Transactions, Fees, Scams)
+2. Quick evaluation of concepts taught (Giving completion NFTs)
+3. Game applying those concepts (Monopoly style)
+    
+MVP core functionalities:
+
+
