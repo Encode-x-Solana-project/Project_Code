@@ -11,4 +11,11 @@ Objectives
     
 MVP core functionalities:
 
+Name ideas: 
+
+Solearning
+Hashtutor
+Lamprofessor
+Blockchain academy
+
 
