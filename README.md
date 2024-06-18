@@ -13,9 +13,9 @@ MVP core functionalities:
 
 Name ideas: 
 
-Solearning
-Hashtutor
-Lamprofessor
-Blockchain academy
+-Solearning
+-Hashtutor
+-Lamprofessor
+-Blockchain academy
 
 
