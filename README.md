@@ -1,7 +1,6 @@
-Solana Encode
-June/2024
-─
-Vision
+# Solana Encode _June/2024_
+## Vision
+
 Educating new users into crypto in a fun and safe environment.
 
 Objectives
@@ -10,12 +9,14 @@ Objectives
 3. Game applying those concepts (Monopoly style)
     
 MVP core functionalities:
+- login using social (Google, Twitter, etc.)
+- login using wallet (which wallet)
+- invite friends
+- track missions
+
 
 Name ideas: 
-
--Solearning
--Hashtutor
--Lamprofessor
--Blockchain academy
-
-
+- Solearning
+- Hashtutor
+- Lamprofessor
+- Blockchain academy
