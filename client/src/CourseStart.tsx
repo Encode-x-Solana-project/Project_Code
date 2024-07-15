@@ -2,30 +2,62 @@ import React, { useEffect, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Link } from 'react-router-dom';
+import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
+import * as anchor from '@coral-xyz/anchor';
+import { Program, AnchorProvider } from '@coral-xyz/anchor';
+import idl from '../../target/idl/solarning_anchor.json';
 
 const modules = [
     { title: 'Crypto Fundamentals', description: 'Learn the basics of cryptocurrencies.', link: '/wallet-explanation' },
-    { title: 'DeFi Tutorial', description: 'Dive into decentralized finance.', link:'/wallet-explanation' },
-    { title: 'Trivia Game', description: 'Test your knowledge with fun quizzes.', link:'/wallet-explanation'}
+    { title: 'DeFi Tutorial', description: 'Dive into decentralized finance.', link: '/wallet-explanation' },
+    { title: 'Trivia Game', description: 'Test your knowledge with fun quizzes.', link: '/wallet-explanation' }
 ];
 
-function CourseStart() {
+const programId = new PublicKey(idl.metadata.address);
+
+const CourseStart: React.FC = () => {
     const { connected, publicKey } = useWallet();
-    const [progress, setProgress] = useState({});
+    const [progress, setProgress] = useState<{ [key: string]: number }>({});
 
     useEffect(() => {
-        if (connected) {
-            fetchUserProgress();
-        }
-    }, [connected]);
+        if (connected && publicKey) {
+            const connection = new Connection(clusterApiUrl('devnet'));
+            const provider = new AnchorProvider(connection, window.solana, {});
+            anchor.setProvider(provider);
+            const program = new Program(idl as anchor.Idl, programId, provider);
 
-    const fetchUserProgress = async () => {
-        const userProgress = {
-            'Crypto Fundamentals': 50,
-            'DeFi Tutorial': 0,
-            'Trivia Game': 0
-        };
-        setProgress(userProgress);
+            fetchUserProgress(program, publicKey)
+                .then(userProgress => {
+                    setProgress(userProgress);
+                })
+                .catch(error => {
+                    console.error('Error fetching user progress:', error);
+                });
+        }
+    }, [connected, publicKey]);
+
+    const fetchUserProgress = async (program: Program, userPublicKey: PublicKey) => {
+        const [userPda] = await PublicKey.findProgramAddress(
+            [Buffer.from('user_data'), userPublicKey.toBuffer()],
+            program.programId
+        );
+
+        try {
+            const userData = await program.account.userData.fetch(userPda);
+            const userProgress = {
+                'Crypto Fundamentals': userData.progress.includes('Crypto Fundamentals') ? 50 : 0,
+                'DeFi Tutorial': userData.progress.includes('DeFi Tutorial') ? 50 : 0,
+                'Trivia Game': userData.progress.includes('Trivia Game') ? 50 : 0
+            };
+            return userProgress;
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            return {
+                'Crypto Fundamentals': 0,
+                'DeFi Tutorial': 0,
+                'Trivia Game': 0
+            };
+        }
     };
 
     return (
@@ -37,7 +69,7 @@ function CourseStart() {
                         <WalletMultiButton style={styles.walletButton} />
                     </div>
                 ) : (
-                    <h2>Welcome, {publicKey.toString()}</h2>
+                    <h2>Welcome, {publicKey?.toString()}</h2>
                 )}
             </header>
 
@@ -83,9 +115,9 @@ function CourseStart() {
             )}
         </div>
     );
-}
+};
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
     container: {
         textAlign: 'center',
         padding: '20px'
