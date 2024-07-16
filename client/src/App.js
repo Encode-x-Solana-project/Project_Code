@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './SolaringLogoDef.svg';
 import './App.css';
 import LiquidityPools from './LiquidityPools';
 import Portfolio from './Portfolio';
