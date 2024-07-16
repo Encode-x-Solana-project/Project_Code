@@ -1,5 +1,14 @@
 import React from 'react';
 import { Container, Box, Typography, Button, TextField, Select, MenuItem, FormControl, InputLabel, Tabs, Tab, AppBar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+const LiquidityPools = ({accounts, setAccounts}) => {
+  const isConnected = Boolean(aacounts[0]);
+
+  async function connectWallet() {
+    const provider = await window.solana.connect();
+    const accounts = await provider.getAccounts();
+    setAccounts(accounts);
+  }
+}
 
 function LiquidityPools() {
   return (
@@ -10,7 +19,11 @@ function LiquidityPools() {
           <Tab label="Liquidity" />
           <Tab label="Portfolio" />
           <Tab label="More" />
-          <Button variant="contained" color="secondary" sx={{ marginLeft: 'auto' }}>Connect Wallet</Button>
+          {isConnected ? (
+            <p>Connected</p>
+          ) : (
+          <Button variant="contained" color="secondary" sx={{ marginLeft: 'auto' }} onClick={connectWallet}>Connect Wallet</Button>
+          )}
         </Tabs>
       </AppBar>
 
