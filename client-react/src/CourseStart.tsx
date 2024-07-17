@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import * as anchor from '@coral-xyz/anchor';
 import { Program, AnchorProvider } from '@coral-xyz/anchor';
-import idl from '../../target/idl/solarning_anchor.json';
+import {program, SolarningAnchorPDA, SolarningAnchorData} from './Anchor/setup' //imported initiation file
 
 const modules = [
     { title: 'Crypto Fundamentals', description: 'Learn the basics of cryptocurrencies.', link: '/wallet-explanation' },
@@ -13,20 +13,13 @@ const modules = [
     { title: 'Trivia Game', description: 'Test your knowledge with fun quizzes.', link: '/wallet-explanation' }
 ];
 
-const programId = new PublicKey(idl.metadata.address);
-
 const CourseStart: React.FC = () => {
     const { connected, publicKey } = useWallet();
     const [progress, setProgress] = useState<{ [key: string]: number }>({});
 
     useEffect(() => {
         if (connected && publicKey) {
-            const connection = new Connection(clusterApiUrl('devnet'));
-            const provider = new AnchorProvider(connection, window.solana, {});
-            anchor.setProvider(provider);
-            const program = new Program(idl as anchor.Idl, programId, provider);
-
-            fetchUserProgress(program, publicKey)
+            fetchUserProgress(publicKey)
                 .then(userProgress => {
                     setProgress(userProgress);
                 })
@@ -36,14 +29,14 @@ const CourseStart: React.FC = () => {
         }
     }, [connected, publicKey]);
 
-    const fetchUserProgress = async (program: Program, userPublicKey: PublicKey) => {
+    const fetchUserProgress = async (userPublicKey: PublicKey) => {
         const [userPda] = await PublicKey.findProgramAddress(
             [Buffer.from('user_data'), userPublicKey.toBuffer()],
             program.programId
         );
 
         try {
-            const userData = await program.account.userData.fetch(userPda);
+            const userData = await program.account.userData.fetch(userPda) as SolarningAnchorData;
             const userProgress = {
                 'Crypto Fundamentals': userData.progress.includes('Crypto Fundamentals') ? 50 : 0,
                 'DeFi Tutorial': userData.progress.includes('DeFi Tutorial') ? 50 : 0,
@@ -59,7 +52,7 @@ const CourseStart: React.FC = () => {
             };
         }
     };
-
+    
     return (
         <div style={styles.container}>
             <header style={styles.header}>
