@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CourseStart from './CourseStart'; // Import your CourseStart component
 import WalletExplanation from './WalletExplanation';
 
-function AppWrapper() {
+const AppWrapper: React.FC = () => {
     const wallets = [new PhantomWalletAdapter()];
 
     return (

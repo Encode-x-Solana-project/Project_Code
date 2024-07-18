@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WalletExplanation = () => {
+const WalletExplanation: React.FC = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h1>Understanding Solana Wallets</h1>

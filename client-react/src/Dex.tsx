@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Box, Typography, Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
-function Dex() {
+const Dex: React.FC = () => {
   return (
     <Container maxWidth="md" sx={{ backgroundColor: '#333', color: '#fff', padding: 2, borderRadius: 1 }}>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
