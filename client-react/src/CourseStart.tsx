@@ -55,16 +55,7 @@ const CourseStart: React.FC = () => {
     
     return (
         <div style={styles.container}>
-            <header style={styles.header}>
-                <h1>Welcome to Solana Learning Platform</h1>
-                {!connected ? (
-                    <div style={styles.connectContainer}>
-                        <WalletMultiButton style={styles.walletButton} />
-                    </div>
-                ) : (
-                    <h2>Welcome, {publicKey?.toString()}</h2>
-                )}
-            </header>
+ 
 
             <section style={styles.aboutSection}>
                 <h2>What You Will Learn</h2>

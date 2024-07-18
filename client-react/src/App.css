@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+@font-face {
+  font-family: 'Bakso Sapi';
+  src: local('Bakso Sapi'), url(./fonts/BaksoSapi.otf) format('opentype');
+}
+
+.App {
+max-width: fit-content;
+overflow: hidden;
+background-color: #030C34;
+}
+
+.App-logo {
+  height: 20vmin;;
+  float: left;
+  pointer-events: none;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 100px;
+}
+
+.App-header {
+  background-color: #079CFD;
+  min-height: 5vh;
+  display: flex;
+=======
 .App {
   text-align: center;
 }
@@ -20,10 +46,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+>>>>>>> b2eb569215e77b8ef234026ae8381f9c0bb6d37b
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+<<<<<<< HEAD
+.App{
+  background-color: rgb(210, 129, 30);
+  min-height: 100vh;
+  width: 100%;
+}
+
+=======
+>>>>>>> b2eb569215e77b8ef234026ae8381f9c0bb6d37b
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +72,160 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
+
+
+.Title{
+  font-size: calc(20px);
+  font-family: "Bakso Sapi";
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 200px;
+  padding-right: 10px;
+  justify-content: center;
+  align-content: center;
+}
+.connectContainer {
+  display: flex;
+  align-items: center;
+  padding-left: 200px;
+}
+
+.walletButton {
+  margin-top: 20px;
+  
+  align-items: center;
+}
+
+.NavBar {
+  font-size: calc(20px);
+  font-family: "Bakso Sapi";
+  max-width: auto;
+  padding-right: 75px;
+  align-self: end;
+}
+
+
+.dropdown-menu {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 350px;
+}
+
+.dropdown-toggle {
+  background: #079CFD;
+  border: none;
+  cursor: pointer;
+  font-size: calc(40px);
+  font-family: "Bakso Sapi";
+}
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #079CFD;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-list li {
+  padding: 10px;
+  font-size: calc(20px);
+  font-family: "Bakso Sapi";
+}
+
+.dropdown-menu.open .dropdown-list {
+  display: block;
+}
+
+
+.social-menu {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 60px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0px 0px 1px 10px;
+  background-color: #030c34;
+  overflow: hidden;
+  position: relative;
+  align-content: center;
+  flex-wrap: nowrap;
+  border-radius: 50px;
+}
+
+.email-button {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px 5px 10px;
+  background-color: #030c34;
+  overflow: hidden;
+  position: relative;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  border-radius: 50px;
+}
+
+.Ft-logo {
+  height: 6vh;
+  width: 6vh;
+  padding-left: 30px;
+  justify-content: left;
+  align-content: left;
+
+}
+
+.Footer {
+  background-color: #079CFD;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: calc(15px);
+  font-family: "Bakso Sapi";
+  max-width: auto;
+  padding-top: 10px;
+}
+
+.foot-contain{
+  display: inline-flex;
+  height: 32.5px;
+  padding-top: 5px;
+  }
+
+  .icons{
+    align-items: left;
+    padding-right: 20px;
+  }
+
+.row2{
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 100px;
+}
+
+.row3{
+  align-items: center;
+  padding-right: 100px;
+  padding-left: 10px;
+}
+
+.sections {
+  align-items: right;
+  padding-left: 30px;
+}
+
+=======
+>>>>>>> b2eb569215e77b8ef234026ae8381f9c0bb6d37b
