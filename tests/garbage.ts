@@ -1,9 +1,9 @@
-import * as anchor from '@coral-xyz/anchor';
-import { Program } from '@coral-xyz/anchor';
+import * as anchor from '../client-react/node_modules/@coral-xyz/anchor';
+import { Program } from '../client-react/node_modules/@coral-xyz/anchor';
 import { SolarningAnchor } from '../target/types/solarning_anchor';
-import { PublicKey, SystemProgram } from '@solana/web3.js';
-import { assert } from 'chai';
-import { describe, it, before } from 'mocha';
+import { PublicKey, SystemProgram } from '../client-react/node_modules/@solana/web3.js';
+import { assert } from '../client-react/node_modules/chai';
+import { describe, it, before } from '../client-react/node_modules/mocha';
 
 describe('solarning-anchor', () => {
   const provider = anchor.AnchorProvider.env();
